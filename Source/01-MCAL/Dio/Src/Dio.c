@@ -114,3 +114,78 @@ void Dio_vidwriteChanel(dio_port_t port, dio_pin_t pin, dio_level_t level)
 		break;
 	}
 }
+
+dio_level_t Dio_udtreadChanel(dio_port_t port, dio_pin_t pin)
+{
+	dio_level_t loc_result = DIO_LOW;
+
+	switch (port)
+	{
+	case DIO_PORTA:
+		if (CHECK_BIT(DIO_PINA_REG,pin) == 1)
+		{
+			loc_result = DIO_HIGH;
+		}
+		else
+		{
+			loc_result = DIO_LOW;
+		}
+		break;
+
+	case DIO_PORTB:
+		if (CHECK_BIT(DIO_PINB_REG,pin) == 1)
+		{
+			loc_result = DIO_HIGH;
+		}
+		else
+		{
+			loc_result = DIO_LOW;
+		}
+		break;
+
+	case DIO_PORTC:
+		if (CHECK_BIT(DIO_PINC_REG,pin) == 1)
+		{
+			loc_result = DIO_HIGH;
+		}
+		else
+		{
+			loc_result = DIO_LOW;
+		}
+		break;
+
+	case DIO_PORTD:
+		if (CHECK_BIT(DIO_PIND_REG,pin) == 1)
+		{
+			loc_result = DIO_HIGH;
+		}
+		else
+		{
+			loc_result = DIO_LOW;
+		}
+		break;
+	}
+	return loc_result;
+}
+
+void Dio_vidflipChanel(dio_port_t port, dio_pin_t pin)
+{
+	switch(port)
+	{
+	case DIO_PORTA:
+		FLIP_BIT(DIO_PORTA_REG,pin);
+		break;
+
+	case DIO_PORTB:
+		FLIP_BIT(DIO_PORTB_REG,pin);
+		break;
+
+	case DIO_PORTC:
+		FLIP_BIT(DIO_PORTC_REG,pin);
+		break;
+
+	case DIO_PORTD:
+		FLIP_BIT(DIO_PORTD_REG,pin);
+		break;
+	}
+}

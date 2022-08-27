@@ -3,17 +3,17 @@ Archive member included because of file (symbol)
 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
                               c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o (exit)
 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_fixunssfsi.o)
-                              ./main.o (__fixunssfsi)
+                              ./Source/04-App/main.o (__fixunssfsi)
 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_addsub_sf.o)
                               c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_fixunssfsi.o) (__subsf3)
 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_mul_sf.o)
-                              ./main.o (__mulsf3)
+                              ./Source/04-App/main.o (__mulsf3)
 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_gt_sf.o)
-                              ./main.o (__gtsf2)
+                              ./Source/04-App/main.o (__gtsf2)
 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_ge_sf.o)
                               c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_fixunssfsi.o) (__gesf2)
 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_lt_sf.o)
-                              ./main.o (__ltsf2)
+                              ./Source/04-App/main.o (__ltsf2)
 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_sf_to_si.o)
                               c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_fixunssfsi.o) (__fixsfsi)
 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_thenan_sf.o)
@@ -45,8 +45,9 @@ signature        0x00840000         0x00000400         rw !x
 Linker script and memory map
 
 LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
-LOAD ./Dio.o
-LOAD ./main.o
+LOAD ./Source/04-App/main.o
+LOAD ./Source/02-ECUA/Led/Src/Led.o
+LOAD ./Source/01-MCAL/Dio/Src/Dio.o
 LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
 LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a
 LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
@@ -141,7 +142,7 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000     0x113a
+.text           0x00000000     0x141e
  *(.vectors)
  .vectors       0x00000000       0x54 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
                 0x00000000                __vectors
@@ -216,8 +217,9 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
                 0x0000007e                __vector_16
                 0x0000007e                __vector_18
                 0x0000007e                __vector_20
- .text          0x00000082        0x0 ./Dio.o
- .text          0x00000082        0x0 ./main.o
+ .text          0x00000082        0x0 ./Source/04-App/main.o
+ .text          0x00000082        0x0 ./Source/02-ECUA/Led/Src/Led.o
+ .text          0x00000082        0x0 ./Source/01-MCAL/Dio/Src/Dio.o
  .text          0x00000082        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
  .text          0x00000082       0x58 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_fixunssfsi.o)
                 0x00000082                __fixunssfsi
@@ -246,25 +248,37 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
                 0x00000a84                __fpcmp_parts_f
                 0x00000b36                . = ALIGN (0x2)
  *(.text.*)
+ .text.main     0x00000b36      0x206 ./Source/04-App/main.o
+                0x00000b36                main
+ .text.Led_vidledOn
+                0x00000d3c       0x62 ./Source/02-ECUA/Led/Src/Led.o
+                0x00000d3c                Led_vidledOn
+ .text.Led_vidledOff
+                0x00000d9e       0x62 ./Source/02-ECUA/Led/Src/Led.o
+                0x00000d9e                Led_vidledOff
  .text.Dio_vidconfigChanel
-                0x00000b36      0x1c6 ./Dio.o
-                0x00000b36                Dio_vidconfigChanel
+                0x00000e00      0x1c6 ./Source/01-MCAL/Dio/Src/Dio.o
+                0x00000e00                Dio_vidconfigChanel
  .text.Dio_vidwriteChanel
-                0x00000cfc      0x1c6 ./Dio.o
-                0x00000cfc                Dio_vidwriteChanel
- .text.main     0x00000ec2      0x206 ./main.o
-                0x00000ec2                main
- .text.libgcc   0x000010c8        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
- .text.libgcc   0x000010c8       0x38 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_prologue.o)
-                0x000010c8                __prologue_saves__
- .text.libgcc   0x00001100       0x36 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_epilogue.o)
-                0x00001100                __epilogue_restores__
- .text.libgcc   0x00001136        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
-                0x00001136                . = ALIGN (0x2)
+                0x00000fc6      0x1c6 ./Source/01-MCAL/Dio/Src/Dio.o
+                0x00000fc6                Dio_vidwriteChanel
+ .text.Dio_udtreadChanel
+                0x0000118c      0x126 ./Source/01-MCAL/Dio/Src/Dio.o
+                0x0000118c                Dio_udtreadChanel
+ .text.Dio_vidflipChanel
+                0x000012b2       0xfa ./Source/01-MCAL/Dio/Src/Dio.o
+                0x000012b2                Dio_vidflipChanel
+ .text.libgcc   0x000013ac        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+ .text.libgcc   0x000013ac       0x38 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_prologue.o)
+                0x000013ac                __prologue_saves__
+ .text.libgcc   0x000013e4       0x36 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_epilogue.o)
+                0x000013e4                __epilogue_restores__
+ .text.libgcc   0x0000141a        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
+                0x0000141a                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00001136        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
-                0x00001136                exit
-                0x00001136                _exit
+ .fini9         0x0000141a        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+                0x0000141a                exit
+                0x0000141a                _exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -283,16 +297,17 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00001136        0x4 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+ .fini0         0x0000141a        0x4 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
  *(.fini0)
-                0x0000113a                _etext = .
+                0x0000141e                _etext = .
 
-.data           0x00800060        0x8 load address 0x0000113a
+.data           0x00800060        0x8 load address 0x0000141e
                 0x00800060                PROVIDE (__data_start, .)
  *(.data)
  .data          0x00800060        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
- .data          0x00800060        0x0 ./Dio.o
- .data          0x00800060        0x0 ./main.o
+ .data          0x00800060        0x0 ./Source/04-App/main.o
+ .data          0x00800060        0x0 ./Source/02-ECUA/Led/Src/Led.o
+ .data          0x00800060        0x0 ./Source/01-MCAL/Dio/Src/Dio.o
  .data          0x00800060        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
  .data          0x00800060        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_fixunssfsi.o)
  .data          0x00800060        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_addsub_sf.o)
@@ -321,8 +336,9 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
                 0x00800068                PROVIDE (__bss_start, .)
  *(.bss)
  .bss           0x00800068        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
- .bss           0x00800068        0x0 ./Dio.o
- .bss           0x00800068        0x0 ./main.o
+ .bss           0x00800068        0x0 ./Source/04-App/main.o
+ .bss           0x00800068        0x0 ./Source/02-ECUA/Led/Src/Led.o
+ .bss           0x00800068        0x0 ./Source/01-MCAL/Dio/Src/Dio.o
  .bss           0x00800068        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
  .bss           0x00800068        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_fixunssfsi.o)
  .bss           0x00800068        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_addsub_sf.o)
@@ -341,8 +357,8 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
  *(.bss*)
  *(COMMON)
                 0x00800068                PROVIDE (__bss_end, .)
-                0x0000113a                __data_load_start = LOADADDR (.data)
-                0x00001142                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x0000141e                __data_load_start = LOADADDR (.data)
+                0x00001426                __data_load_end = (__data_load_start + SIZEOF (.data))
 
 .noinit         0x00800068        0x0
                 0x00800068                PROVIDE (__noinit_start, .)
@@ -367,15 +383,17 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
 .signature
  *(.signature*)
 
-.stab           0x00000000      0x7f8
+.stab           0x00000000      0xbac
  *(.stab)
- .stab          0x00000000      0x3b4 ./Dio.o
- .stab          0x000003b4      0x444 ./main.o
-                                0x540 (size before relaxing)
+ .stab          0x00000000      0x558 ./Source/04-App/main.o
+ .stab          0x00000558      0x204 ./Source/02-ECUA/Led/Src/Led.o
+                                0x30c (size before relaxing)
+ .stab          0x0000075c      0x450 ./Source/01-MCAL/Dio/Src/Dio.o
+                                0x558 (size before relaxing)
 
-.stabstr        0x00000000      0x899
+.stabstr        0x00000000      0xa6a
  *(.stabstr)
- .stabstr       0x00000000      0x899 ./Dio.o
+ .stabstr       0x00000000      0xa6a ./Source/04-App/main.o
 
 .stab.excl
  *(.stab.excl)
