@@ -9,7 +9,9 @@ RM := rm -rf
 # All of the sources participating in the build are defined here
 -include sources.mk
 -include Source/04-App/subdir.mk
+-include Source/02-ECUA/SSD/Src/subdir.mk
 -include Source/02-ECUA/Led/Src/subdir.mk
+-include Source/02-ECUA/Button/Src/subdir.mk
 -include Source/01-MCAL/Dio/Src/subdir.mk
 -include subdir.mk
 -include objects.mk
@@ -46,6 +48,9 @@ BUILD_ARTIFACT := $(BUILD_ARTIFACT_PREFIX)$(BUILD_ARTIFACT_NAME)$(if $(BUILD_ART
 LSS += \
 Oct20_Amit_Interfacing.lss \
 
+FLASH_IMAGE += \
+Oct20_Amit_Interfacing.hex \
+
 SIZEDUMMY += \
 sizedummy \
 
@@ -70,6 +75,12 @@ Oct20_Amit_Interfacing.lss: Oct20_Amit_Interfacing.elf makefile objects.mk $(OPT
 	@echo 'Finished building: $@'
 	@echo ' '
 
+Oct20_Amit_Interfacing.hex: Oct20_Amit_Interfacing.elf makefile objects.mk $(OPTIONAL_TOOL_DEPS)
+	@echo 'Create Flash image (ihex format)'
+	-avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex Oct20_Amit_Interfacing.elf  "Oct20_Amit_Interfacing.hex"
+	@echo 'Finished building: $@'
+	@echo ' '
+
 sizedummy: Oct20_Amit_Interfacing.elf makefile objects.mk $(OPTIONAL_TOOL_DEPS)
 	@echo 'Invoking: Print Size'
 	-avr-size --format=avr --mcu=atmega32 Oct20_Amit_Interfacing.elf
@@ -78,10 +89,10 @@ sizedummy: Oct20_Amit_Interfacing.elf makefile objects.mk $(OPTIONAL_TOOL_DEPS)
 
 # Other Targets
 clean:
-	-$(RM) $(ELFS)$(OBJS)$(ASM_DEPS)$(S_DEPS)$(SIZEDUMMY)$(S_UPPER_DEPS)$(LSS)$(C_DEPS) Oct20_Amit_Interfacing.elf
+	-$(RM) $(FLASH_IMAGE)$(ELFS)$(OBJS)$(ASM_DEPS)$(S_DEPS)$(SIZEDUMMY)$(S_UPPER_DEPS)$(LSS)$(C_DEPS) Oct20_Amit_Interfacing.elf
 	-@echo ' '
 
-secondary-outputs: $(LSS) $(SIZEDUMMY)
+secondary-outputs: $(LSS) $(FLASH_IMAGE) $(SIZEDUMMY)
 
 .PHONY: all clean dependents main-build
 

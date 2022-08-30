@@ -17,7 +17,7 @@ typedef enum
 
 typedef enum
 {
-	RELAEASED,
+	RELEASED,
 	PRESSED
 }button_butStatus_t;
 

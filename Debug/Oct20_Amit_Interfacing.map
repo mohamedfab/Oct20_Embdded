@@ -1,19 +1,21 @@
 Archive member included because of file (symbol)
 
+c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodqi4.o)
+                              ./Source/02-ECUA/SSD/Src/SSD.o (__udivmodqi4)
 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
                               c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o (exit)
 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_fixunssfsi.o)
-                              ./Source/04-App/main.o (__fixunssfsi)
+                              ./Source/02-ECUA/SSD/Src/SSD.o (__fixunssfsi)
 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_addsub_sf.o)
                               c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_fixunssfsi.o) (__subsf3)
 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_mul_sf.o)
-                              ./Source/04-App/main.o (__mulsf3)
+                              ./Source/02-ECUA/SSD/Src/SSD.o (__mulsf3)
 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_gt_sf.o)
-                              ./Source/04-App/main.o (__gtsf2)
+                              ./Source/02-ECUA/SSD/Src/SSD.o (__gtsf2)
 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_ge_sf.o)
                               c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_fixunssfsi.o) (__gesf2)
 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_lt_sf.o)
-                              ./Source/04-App/main.o (__ltsf2)
+                              ./Source/02-ECUA/SSD/Src/SSD.o (__ltsf2)
 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_sf_to_si.o)
                               c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_fixunssfsi.o) (__fixsfsi)
 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_thenan_sf.o)
@@ -46,7 +48,9 @@ Linker script and memory map
 
 LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
 LOAD ./Source/04-App/main.o
+LOAD ./Source/02-ECUA/SSD/Src/SSD.o
 LOAD ./Source/02-ECUA/Led/Src/Led.o
+LOAD ./Source/02-ECUA/Button/Src/Button.o
 LOAD ./Source/01-MCAL/Dio/Src/Dio.o
 LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
 LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a
@@ -142,7 +146,7 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000     0x141e
+.text           0x00000000     0x1676
  *(.vectors)
  .vectors       0x00000000       0x54 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
                 0x00000000                __vectors
@@ -218,8 +222,11 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
                 0x0000007e                __vector_18
                 0x0000007e                __vector_20
  .text          0x00000082        0x0 ./Source/04-App/main.o
+ .text          0x00000082        0x0 ./Source/02-ECUA/SSD/Src/SSD.o
  .text          0x00000082        0x0 ./Source/02-ECUA/Led/Src/Led.o
+ .text          0x00000082        0x0 ./Source/02-ECUA/Button/Src/Button.o
  .text          0x00000082        0x0 ./Source/01-MCAL/Dio/Src/Dio.o
+ .text          0x00000082        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodqi4.o)
  .text          0x00000082        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
  .text          0x00000082       0x58 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_fixunssfsi.o)
                 0x00000082                __fixunssfsi
@@ -248,37 +255,57 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
                 0x00000a84                __fpcmp_parts_f
                 0x00000b36                . = ALIGN (0x2)
  *(.text.*)
- .text.main     0x00000b36      0x206 ./Source/04-App/main.o
+ .text.main     0x00000b36       0x18 ./Source/04-App/main.o
                 0x00000b36                main
+ .text.SSD_vidinit
+                0x00000b4e       0x4a ./Source/02-ECUA/SSD/Src/SSD.o
+                0x00000b4e                SSD_vidinit
+ .text.SSD_viddisplyNum
+                0x00000b98      0x24e ./Source/02-ECUA/SSD/Src/SSD.o
+                0x00000b98                SSD_viddisplyNum
+ .text.Led_vidledInit
+                0x00000de6       0x2c ./Source/02-ECUA/Led/Src/Led.o
+                0x00000de6                Led_vidledInit
  .text.Led_vidledOn
-                0x00000d3c       0x62 ./Source/02-ECUA/Led/Src/Led.o
-                0x00000d3c                Led_vidledOn
+                0x00000e12       0x62 ./Source/02-ECUA/Led/Src/Led.o
+                0x00000e12                Led_vidledOn
  .text.Led_vidledOff
-                0x00000d9e       0x62 ./Source/02-ECUA/Led/Src/Led.o
-                0x00000d9e                Led_vidledOff
+                0x00000e74       0x62 ./Source/02-ECUA/Led/Src/Led.o
+                0x00000e74                Led_vidledOff
+ .text.Button_vidbuttonInit
+                0x00000ed6       0x2c ./Source/02-ECUA/Button/Src/Button.o
+                0x00000ed6                Button_vidbuttonInit
+ .text.Button_udtbuttonStatus
+                0x00000f02       0x86 ./Source/02-ECUA/Button/Src/Button.o
+                0x00000f02                Button_udtbuttonStatus
  .text.Dio_vidconfigChanel
-                0x00000e00      0x1c6 ./Source/01-MCAL/Dio/Src/Dio.o
-                0x00000e00                Dio_vidconfigChanel
+                0x00000f88      0x1c6 ./Source/01-MCAL/Dio/Src/Dio.o
+                0x00000f88                Dio_vidconfigChanel
  .text.Dio_vidwriteChanel
-                0x00000fc6      0x1c6 ./Source/01-MCAL/Dio/Src/Dio.o
-                0x00000fc6                Dio_vidwriteChanel
+                0x0000114e      0x1c6 ./Source/01-MCAL/Dio/Src/Dio.o
+                0x0000114e                Dio_vidwriteChanel
+ .text.Dio_vidWriteChanelGroup
+                0x00001314       0xb8 ./Source/01-MCAL/Dio/Src/Dio.o
+                0x00001314                Dio_vidWriteChanelGroup
  .text.Dio_udtreadChanel
-                0x0000118c      0x126 ./Source/01-MCAL/Dio/Src/Dio.o
-                0x0000118c                Dio_udtreadChanel
+                0x000013cc      0x126 ./Source/01-MCAL/Dio/Src/Dio.o
+                0x000013cc                Dio_udtreadChanel
  .text.Dio_vidflipChanel
-                0x000012b2       0xfa ./Source/01-MCAL/Dio/Src/Dio.o
-                0x000012b2                Dio_vidflipChanel
- .text.libgcc   0x000013ac        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
- .text.libgcc   0x000013ac       0x38 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_prologue.o)
-                0x000013ac                __prologue_saves__
- .text.libgcc   0x000013e4       0x36 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_epilogue.o)
-                0x000013e4                __epilogue_restores__
- .text.libgcc   0x0000141a        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
-                0x0000141a                . = ALIGN (0x2)
+                0x000014f2       0xfa ./Source/01-MCAL/Dio/Src/Dio.o
+                0x000014f2                Dio_vidflipChanel
+ .text.libgcc   0x000015ec       0x18 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodqi4.o)
+                0x000015ec                __udivmodqi4
+ .text.libgcc   0x00001604        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+ .text.libgcc   0x00001604       0x38 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_prologue.o)
+                0x00001604                __prologue_saves__
+ .text.libgcc   0x0000163c       0x36 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_epilogue.o)
+                0x0000163c                __epilogue_restores__
+ .text.libgcc   0x00001672        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_copy_data.o)
+                0x00001672                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x0000141a        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
-                0x0000141a                exit
-                0x0000141a                _exit
+ .fini9         0x00001672        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+                0x00001672                exit
+                0x00001672                _exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -297,17 +324,20 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x0000141a        0x4 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+ .fini0         0x00001672        0x4 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
  *(.fini0)
-                0x0000141e                _etext = .
+                0x00001676                _etext = .
 
-.data           0x00800060        0x8 load address 0x0000141e
+.data           0x00800060        0x8 load address 0x00001676
                 0x00800060                PROVIDE (__data_start, .)
  *(.data)
  .data          0x00800060        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
  .data          0x00800060        0x0 ./Source/04-App/main.o
+ .data          0x00800060        0x0 ./Source/02-ECUA/SSD/Src/SSD.o
  .data          0x00800060        0x0 ./Source/02-ECUA/Led/Src/Led.o
+ .data          0x00800060        0x0 ./Source/02-ECUA/Button/Src/Button.o
  .data          0x00800060        0x0 ./Source/01-MCAL/Dio/Src/Dio.o
+ .data          0x00800060        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodqi4.o)
  .data          0x00800060        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
  .data          0x00800060        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_fixunssfsi.o)
  .data          0x00800060        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_addsub_sf.o)
@@ -337,8 +367,11 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
  *(.bss)
  .bss           0x00800068        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm32.o
  .bss           0x00800068        0x0 ./Source/04-App/main.o
+ .bss           0x00800068        0x0 ./Source/02-ECUA/SSD/Src/SSD.o
  .bss           0x00800068        0x0 ./Source/02-ECUA/Led/Src/Led.o
+ .bss           0x00800068        0x0 ./Source/02-ECUA/Button/Src/Button.o
  .bss           0x00800068        0x0 ./Source/01-MCAL/Dio/Src/Dio.o
+ .bss           0x00800068        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodqi4.o)
  .bss           0x00800068        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
  .bss           0x00800068        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_fixunssfsi.o)
  .bss           0x00800068        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_addsub_sf.o)
@@ -357,8 +390,8 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
  *(.bss*)
  *(COMMON)
                 0x00800068                PROVIDE (__bss_end, .)
-                0x0000141e                __data_load_start = LOADADDR (.data)
-                0x00001426                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x00001676                __data_load_start = LOADADDR (.data)
+                0x0000167e                __data_load_end = (__data_load_start + SIZEOF (.data))
 
 .noinit         0x00800068        0x0
                 0x00800068                PROVIDE (__noinit_start, .)
@@ -383,17 +416,21 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
 .signature
  *(.signature*)
 
-.stab           0x00000000      0xbac
+.stab           0x00000000     0x1164
  *(.stab)
- .stab          0x00000000      0x558 ./Source/04-App/main.o
- .stab          0x00000558      0x204 ./Source/02-ECUA/Led/Src/Led.o
-                                0x30c (size before relaxing)
- .stab          0x0000075c      0x450 ./Source/01-MCAL/Dio/Src/Dio.o
-                                0x558 (size before relaxing)
+ .stab          0x00000000      0x3a8 ./Source/04-App/main.o
+ .stab          0x000003a8      0x444 ./Source/02-ECUA/SSD/Src/SSD.o
+                                0x660 (size before relaxing)
+ .stab          0x000007ec      0x21c ./Source/02-ECUA/Led/Src/Led.o
+                                0x354 (size before relaxing)
+ .stab          0x00000a08      0x288 ./Source/02-ECUA/Button/Src/Button.o
+                                0x390 (size before relaxing)
+ .stab          0x00000c90      0x4d4 ./Source/01-MCAL/Dio/Src/Dio.o
+                                0x5dc (size before relaxing)
 
-.stabstr        0x00000000      0xa6a
+.stabstr        0x00000000      0xce5
  *(.stabstr)
- .stabstr       0x00000000      0xa6a ./Source/04-App/main.o
+ .stabstr       0x00000000      0xce5 ./Source/04-App/main.o
 
 .stab.excl
  *(.stab.excl)

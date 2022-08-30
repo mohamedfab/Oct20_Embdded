@@ -8,6 +8,7 @@
 #ifndef DIO_TYPES_H_
 #define DIO_TYPES_H_
 
+
 typedef enum
 {
 	DIO_PORTA,
@@ -15,6 +16,7 @@ typedef enum
 	DIO_PORTC,
 	DIO_PORTD
 }dio_port_t;
+
 
 typedef enum
 {
