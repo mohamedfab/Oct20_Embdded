@@ -15,37 +15,28 @@
 
 int main()
 {
-	u8 cntr =0;
-	u8 customChar[] = {
-	  0b01110,
-	  0b11111,
-	  0b10001,
-	  0b10001,
-	  0b10001,
-	  0b10001,
-	  0b10001,
-	  0b11111
-	};
-
-
-	Lcd_vidinit();
-	for (cntr=0; cntr<8; cntr++)
-	{
-		Lcd_vidCmd(0x40+cntr); /* */
-		Lcd_vidDisplayChar(customChar[cntr]);
-	}
-
-	Lcd_vidRowColumn(0, 0);  /*DDRAM*/
-	Lcd_vidDisplayChar(0);
-
-	Led_vidledInit();
+	u8 counter = 0;
+	u16 delay = 0;
 	SSD_vidinit();
-	Lcd_vidRowColumn(0, 0);
-	Lcd_vidDisplyStr("    ");
-	Lcd_vidRowColumn(0, 0);
-
 	while (1)
 	{
+	 SSD_viddisplyNum(counter);
+
+	 for (delay=0; delay<1000;delay++)
+	 {
+		 _delay_ms(1);
+		 SSD_viddisplyNum(counter);
+	 }
+
+//	 _delay_ms(1000);
+
+	 counter++;
+
+	 if (counter == 100)
+	 {
+		 counter = 00;
+	 }
+
 
 	}
 	return 0;
