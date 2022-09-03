@@ -12,31 +12,15 @@
 #include "SSD.h"
 #include "Lcd.h"
 #include <stdio.h>
+#include "Button.h"
+#include "GINT.h"
 
 int main()
 {
-	u8 counter = 0;
-	u16 delay = 0;
-	SSD_vidinit();
+
+	GINT_vidEnableAllInterrupts();
 	while (1)
 	{
-	 SSD_viddisplyNum(counter);
-
-	 for (delay=0; delay<1000;delay++)
-	 {
-		 _delay_ms(1);
-		 SSD_viddisplyNum(counter);
-	 }
-
-//	 _delay_ms(1000);
-
-	 counter++;
-
-	 if (counter == 100)
-	 {
-		 counter = 00;
-	 }
-
 
 	}
 	return 0;

@@ -14,6 +14,7 @@
 
 void SSD_vidinit(void);
 void SSD_viddisplyNum(u8 num);
+void SSD_vidDelayWithDisply_ms(u8 num,u32 delay);
 
 
 #endif /* SOURCE_02_ECUA_SSD_INC_SSD_H_ */
