@@ -7,7 +7,8 @@ Source/04-App/main.o Source/04-App/main.o: ../Source/04-App/main.c \
   F:\Oct20_Embdded\Source\02-ECUA\LCD\Inc/Lcd.h \
   F:\Oct20_Embdded\Source\02-ECUA\LCD\Inc/Lcd_Types.h \
   F:\Oct20_Embdded\Source\02-ECUA\Button\Inc/Button.h \
-  F:\Oct20_Embdded\Source\02-ECUA\Button\Inc/Button_Types.h
+  F:\Oct20_Embdded\Source\02-ECUA\Button\Inc/Button_Types.h \
+  F:\Oct20_Embdded\Source\01-MCAL\GINT\Inc/GINT.h
 
 F:\Oct20_Embdded\Source\00-Lib/Std_Types.h:
 
@@ -26,3 +27,5 @@ F:\Oct20_Embdded\Source\02-ECUA\LCD\Inc/Lcd_Types.h:
 F:\Oct20_Embdded\Source\02-ECUA\Button\Inc/Button.h:
 
 F:\Oct20_Embdded\Source\02-ECUA\Button\Inc/Button_Types.h:
+
+F:\Oct20_Embdded\Source\01-MCAL\GINT\Inc/GINT.h:

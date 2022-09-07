@@ -12,6 +12,6 @@
 void Led_vidledInit(void);
 void Led_vidledOn(led_ledId_t led);
 void Led_vidledOff(led_ledId_t led);
-
+void Led_vidledToggle(led_ledId_t ledId);
 
 #endif /* SOURCE_02_ECUA_LED_INC_LED_H_ */
