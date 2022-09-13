@@ -32,7 +32,7 @@ void SSD_viddisplyNum(u8 num)
 	/* Write first digit */
 	Dio_vidWriteChanelGroup(DIO_PORTA, loc_firstDigit, SSD_MASK);
 
-	_delay_us(500);
+	_delay_us(100);
 
 	/* Disable SSD 1	-> EN1 = Low	*/
 	Dio_vidwriteChanel(DIO_PORTB, DIO_PIN2, DIO_LOW);
@@ -41,7 +41,7 @@ void SSD_viddisplyNum(u8 num)
 	/* Write second digit */
 	Dio_vidWriteChanelGroup(DIO_PORTA, loc_secondDigit, SSD_MASK);
 
-	_delay_us(500);
+	_delay_us(100);
 }
 
 void SSD_vidDelayWithDisply_ms(u8 num,u32 delay)

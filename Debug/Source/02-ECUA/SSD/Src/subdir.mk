@@ -17,7 +17,7 @@ C_DEPS += \
 Source/02-ECUA/SSD/Src/%.o: ../Source/02-ECUA/SSD/Src/%.c Source/02-ECUA/SSD/Src/subdir.mk
 	@echo 'Building file: $<'
 	@echo 'Invoking: AVR Compiler'
-	avr-gcc -I"F:\Oct20_Embdded\Source\01-MCAL\Dio\Inc" -I"F:\Oct20_Embdded\Source\01-MCAL\ADC\Inc" -I"F:\Oct20_Embdded\Source\02-ECUA\LM35\Inc" -I"F:\Oct20_Embdded\Source\01-MCAL\EXTINT\Inc" -I"F:\Oct20_Embdded\Source\01-MCAL\GINT\Inc" -I"F:\Oct20_Embdded\Source\02-ECUA\Keypad\Inc" -I"F:\Oct20_Embdded\Source\02-ECUA\LCD\Inc" -I"F:\Oct20_Embdded\Source\02-ECUA\SSD\Inc" -I"F:\Oct20_Embdded\Source\02-ECUA\Button\Inc" -I"F:\Oct20_Embdded\Source\02-ECUA\Led\Inc" -I"F:\Oct20_Embdded\Source\00-Lib" -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=16000000UL -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" -c -o "$@" "$<"
+	avr-gcc -I"F:\Oct20_Embdded\Source\01-MCAL\Dio\Inc" -I"F:\Oct20_Embdded\Source\02-ECUA\DC_Motor\Inc" -I"F:\Oct20_Embdded\Source\01-MCAL\ADC\Inc" -I"F:\Oct20_Embdded\Source\02-ECUA\LM35\Inc" -I"F:\Oct20_Embdded\Source\01-MCAL\EXTINT\Inc" -I"F:\Oct20_Embdded\Source\01-MCAL\GINT\Inc" -I"F:\Oct20_Embdded\Source\02-ECUA\Keypad\Inc" -I"F:\Oct20_Embdded\Source\02-ECUA\LCD\Inc" -I"F:\Oct20_Embdded\Source\02-ECUA\SSD\Inc" -I"F:\Oct20_Embdded\Source\02-ECUA\Button\Inc" -I"F:\Oct20_Embdded\Source\02-ECUA\Led\Inc" -I"F:\Oct20_Embdded\Source\00-Lib" -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=16000000UL -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" -c -o "$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '
 
