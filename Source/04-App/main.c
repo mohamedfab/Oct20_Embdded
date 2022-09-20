@@ -15,44 +15,24 @@
 #include "Button.h"
 #include "GINT.h"
 #include <avr/interrupt.h>
+#include "Uart.h"
 
 
-#define TIMER0_TCCR0_REG			(*(u8*)0x53)
-#define TIMER0_TCNT0_REG			(*(u8*)0x52)
-#define TIMER0_OCR0_REG				(*(u8*)0x5C)
-#define TIMER0_TIMSK_REG			(*(u8*)0x59)
-#define TIMER0_TIFR_REG				(*(u8*)0x58)
-
-ISR(TIMER0_OVF_vect)
-{
-	/*	Take Your Action	*/
-	SSD_viddisplyNum(12);
-	TIMER0_TCNT0_REG = 7;
-	/* Re Set the preload value */
-
-}
-
-ISR(TIMER0_COMP_vect)
-{
-
-}
-
+/*	Slave Code*/
 int main()
 {
-	SSD_vidinit();
+	u8 loc_spiReceive = 0;
+	Spi_vidSlaveInit();
 	Led_vidledInit();
-	Button_vidbuttonInit();
-	GINT_vidEnableAllInterrupts();
-	/*	Enable Overflow interrupt	*/
-	SET_BIT(TIMER0_TIMSK_REG,0);
-	/*	set preload	*/
-	TIMER0_TCNT0_REG = 7;
-	/*	Set Prescaler	*/
-	TIMER0_TCCR0_REG|=3;
 
 	while (1)
 	{
+		loc_spiReceive = Spi_u8SlaveRead();
 
+		if (loc_spiReceive == 'a')
+		{
+			Led_vidledToggle(LED0);
+		}
 	}
 	return 0;
 }
