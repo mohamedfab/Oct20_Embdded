@@ -16,23 +16,16 @@
 #include "GINT.h"
 #include <avr/interrupt.h>
 #include "Uart.h"
-
+#include "Eeprom24C16.h"
 
 /*	Slave Code*/
 int main()
 {
-	u8 loc_spiReceive = 0;
-	Spi_vidSlaveInit();
-	Led_vidledInit();
-
+	Lcd_vidinit();
+	Eeprom24C16_Init();
 	while (1)
 	{
-		loc_spiReceive = Spi_u8SlaveRead();
 
-		if (loc_spiReceive == 'a')
-		{
-			Led_vidledToggle(LED0);
-		}
 	}
 	return 0;
 }
