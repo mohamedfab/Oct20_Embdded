@@ -1,0 +1,146 @@
+******************************************************************************
+                  TI ARM Linker PC v20.2.2                     
+******************************************************************************
+>> Linked Sun Sep 25 22:42:07 2022
+
+OUTPUT FILE NAME:   <ARM_GPIO_OC20_OCT21.out>
+ENTRY POINT SYMBOL: "_c_int00_noinit_noargs"  address: 000007b1
+
+
+MEMORY CONFIGURATION
+
+         name            origin    length      used     unused   attr    fill
+----------------------  --------  ---------  --------  --------  ----  --------
+  FLASH                 00000000   00040000  000007f0  0003f810  R  X
+  SRAM                  20000000   00008000  00000200  00007e00  RW X
+
+
+SEGMENT ALLOCATION MAP
+
+run origin  load origin   length   init length attrs members
+----------  ----------- ---------- ----------- ----- -------
+00000000    00000000    000007f0   000007f0    r-x
+  00000000    00000000    0000026c   0000026c    r-- .intvecs
+  0000026c    0000026c    00000584   00000584    r-x .text
+20000000    20000000    00000200   00000000    rw-
+  20000000    20000000    00000200   00000000    rw- .stack
+
+
+SECTION ALLOCATION MAP
+
+ output                                  attributes/
+section   page    origin      length       input sections
+--------  ----  ----------  ----------   ----------------
+.intvecs   0    00000000    0000026c     
+                  00000000    0000026c     tm4c123gh6pm_startup_ccs.obj (.intvecs)
+
+.text      0    0000026c    00000584     
+                  0000026c    000004c0     Dio.obj (.text)
+                  0000072c    00000082     main.obj (.text)
+                  000007ae    00000002     --HOLE-- [fill = 0]
+                  000007b0    0000002c     rtsv7M4_T_le_v4SPD16_eabi.lib : boot_cortex_m.c.obj (.text:_c_int00_noinit_noargs:_c_int00_noinit_noargs)
+                  000007dc    0000000c     tm4c123gh6pm_startup_ccs.obj (.text)
+                  000007e8    00000004     rtsv7M4_T_le_v4SPD16_eabi.lib : pre_init.c.obj (.text:_system_pre_init)
+                  000007ec    00000004                                   : exit.c.obj (.text:abort:abort)
+
+.cinit     0    00000000    00000000     UNINITIALIZED
+
+.init_array 
+*          0    00000000    00000000     UNINITIALIZED
+
+.stack     0    20000000    00000200     UNINITIALIZED
+                  20000000    00000004     rtsv7M4_T_le_v4SPD16_eabi.lib : boot_cortex_m.c.obj (.stack)
+                  20000004    000001fc     --HOLE--
+
+__llvm_prf_cnts 
+*          0    20000000    00000000     UNINITIALIZED
+
+MODULE SUMMARY
+
+       Module                         code   ro data   rw data
+       ------                         ----   -------   -------
+    .\
+       Dio.obj                        1216   0         0      
+       tm4c123gh6pm_startup_ccs.obj   12     620       0      
+       main.obj                       130    0         0      
+    +--+------------------------------+------+---------+---------+
+       Total:                         1358   620       0      
+                                                              
+    C:\ti\ccs1020\ccs\tools\compiler\ti-cgt-arm_20.2.2.LTS\lib\rtsv7M4_T_le_v4SPD16_eabi.lib
+       boot_cortex_m.c.obj            44     0         0      
+       exit.c.obj                     4      0         0      
+       pre_init.c.obj                 4      0         0      
+    +--+------------------------------+------+---------+---------+
+       Total:                         52     0         0      
+                                                              
+       Stack:                         0      0         512    
+    +--+------------------------------+------+---------+---------+
+       Grand Total:                   1410   620       512    
+
+
+GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name 
+
+address   name                   
+-------   ----                   
+000007ed  C$$EXIT                
+00000615  Dio_udtreadChanel      
+0000026d  Dio_vidClockEnable     
+0000037d  Dio_vidConfigChanel    
+000002e1  Dio_vidDigitalEnable   
+000004b5  Dio_vidWriteChanel     
+000007dd  ResetISR               
+20000200  __STACK_END            
+00000200  __STACK_SIZE           
+20000200  __STACK_TOP            
+ffffffff  __TI_pprof_out_hndl    
+ffffffff  __TI_prof_data_size    
+ffffffff  __TI_prof_data_start   
+00000000  __TI_static_base__     
+ffffffff  __binit__              
+ffffffff  __c_args__             
+UNDEFED   __mpu_init             
+20000000  __stack                
+20000000  __start___llvm_prf_cnts
+20000000  __stop___llvm_prf_cnts 
+000007b1  _c_int00_noinit_noargs 
+000007e9  _system_pre_init       
+000007ed  abort                  
+ffffffff  binit                  
+0000072d  delay_ms               
+00000000  g_pfnVectors           
+0000076f  main                   
+
+
+GLOBAL SYMBOLS: SORTED BY Symbol Address 
+
+address   name                   
+-------   ----                   
+00000000  __TI_static_base__     
+00000000  g_pfnVectors           
+00000200  __STACK_SIZE           
+0000026d  Dio_vidClockEnable     
+000002e1  Dio_vidDigitalEnable   
+0000037d  Dio_vidConfigChanel    
+000004b5  Dio_vidWriteChanel     
+00000615  Dio_udtreadChanel      
+0000072d  delay_ms               
+0000076f  main                   
+000007b1  _c_int00_noinit_noargs 
+000007dd  ResetISR               
+000007e9  _system_pre_init       
+000007ed  C$$EXIT                
+000007ed  abort                  
+20000000  __stack                
+20000000  __start___llvm_prf_cnts
+20000000  __stop___llvm_prf_cnts 
+20000200  __STACK_END            
+20000200  __STACK_TOP            
+ffffffff  __TI_pprof_out_hndl    
+ffffffff  __TI_prof_data_size    
+ffffffff  __TI_prof_data_start   
+ffffffff  __binit__              
+ffffffff  __c_args__             
+ffffffff  binit                  
+UNDEFED   __mpu_init             
+
+[27 symbols]
